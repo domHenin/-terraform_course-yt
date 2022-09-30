@@ -7,10 +7,15 @@
 
 ## Setup IAM Role
 -- User Group: terraform-course
+
     -- rds full access
+
     -- ec2 full access
+
     -- s3 full access
+
     -- route53 full access
 
 --User: terraform-user
+
     -- create new Access Key
