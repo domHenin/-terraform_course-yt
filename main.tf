@@ -1,10 +1,15 @@
 
 terraform {
+  #############################################################
+  ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
+  ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
+  ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
+  #############################################################  
   # backend "s3" {
-  #     bucket = "clx-tf-state_092922"
+  #     bucket = "clxdev-tf-state-0929221157"
   #     key = "acg/code-playground/devops-direct-terraform-course/terraform.tfstat"
   #     region = "us-east-1"
-  #     dynamodb_table = "terraform-state-locking"
+  #     # dynamodb_table = "terraform-state-locking"
   #     encrypt = true      
   # }
 
@@ -22,7 +27,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket        = "clxdev-tf-state-0929221157"
+  bucket        = "clxdev-tf-state-0929221157" #change name of bucket
   force_destroy = true
 }
 
@@ -42,15 +47,15 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state_c
   }
 }
 
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-state-locking"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+# resource "aws_dynamodb_table" "terraform_locks" {
+#     name = "terraform-state-locking"
+#     billing_mode = "PAY_PER_REQUEST"
+#     hash_key = "LockID"
+#     attribute {
+#       name = "LockID"
+#       type = "S"
+#     }  
+# }
 
 
 
