@@ -69,7 +69,10 @@ Run the following to ensure ***terraform*** will only perform the expected
 actions:
 
 ```sh
+terraform fmt
+terraform validate
 terraform plan
+terraform init
 ```
 
 ### Tearing Down the Terraformed Cluster
