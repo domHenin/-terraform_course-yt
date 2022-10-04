@@ -7,9 +7,9 @@ Found new infrastructure to build. this will allow me to get some hands on exper
 -----
 
 
-## Getting Started
+# Getting Started
 
-## Web-App
+### Web-App
 
 Generic web application architecture including:
 - EC2 instances
@@ -20,7 +20,7 @@ Generic web application architecture including:
 
 This example will be refined and improved in later modules.
 
-## Architecture
+### Architecture
 ![](architecture.png)
 
 ----
