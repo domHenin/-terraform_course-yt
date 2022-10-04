@@ -58,9 +58,14 @@ provider "aws" {
 # }
 
 resource "aws_instance" "server01" {
-  ami             = "ami-0149b2da6ceec4bb0"
-  instance_type   = "t2.micro"
+  ami             = var.ami_instance
+  instance_type   = var.type_instance
   security_groups = [aws_security_group.server_sg.name]
+
+  tags = {
+    "Name" = var.instance_name
+  }
+
   user_data       = <<-EOF
           #!/bin/bash
           echo "Hello World from Server01" > insxdex.html
@@ -69,9 +74,14 @@ resource "aws_instance" "server01" {
 }
 
 resource "aws_instance" "server02" {
-  ami             = "ami-0149b2da6ceec4bb0"
-  instance_type   = "t2.micro"
+  ami             = var.ami_instance
+  instance_type   = var.type_instance
   security_groups = [aws_security_group.server_sg.name]
+
+  tags = {
+    "Name" = var.instance_name
+  }
+
   user_data       = <<-EOF
           #!/bin/bash
           echo "Hello World from Server02" > index.html
@@ -84,6 +94,10 @@ resource "aws_instance" "server02" {
 #   force_destroy = true
 # versioning {
 #   enabled = true
+# }
+
+# tags = {
+#   Name = var.s3_data_tag
 # }
 
 # server_side_encryption {
@@ -209,21 +223,35 @@ resource "aws_lb" "load_balancer" {
   security_groups    = [aws_security_group.alb.id]
 }
 
-resource "aws_route53_zone" "primary" {
-  name = "clxdevopsdeployed.com"
-}
+# resource "aws_route53_zone" "primary" {
+#   name = "clxdevopsdeployed.com"
+# }
 
-resource "aws_route53_record" "root" {
-  zone_id = aws_route53_zone.primary.zone_id
-  name    = "clxdevopsdeployed.com"
-  type    = "A"
+# resource "aws_route53_record" "root" {
+#   zone_id = aws_route53_zone.primary.zone_id
+#   name    = "clxdevopsdeployed.com"
+#   type    = "A"
 
-  alias {
-    name                   = aws_lb.load_balancer.dns_name
-    zone_id                = aws_lb.load_balancer.zone_id
-    evaluate_target_health = true
-  }
-}
+#   alias {
+#     name                   = aws_lb.load_balancer.dns_name
+#     zone_id                = aws_lb.load_balancer.zone_id
+#     evaluate_target_health = true
+#   }
+# }
+
+# resource "aws_db_instance" "db_instance" {
+#   allocated_storage   = 20
+#   storage_type        = "standard"
+#   engine              = "postgres"
+#   engine_version      = "12.5"
+#   instance_class      = "db.t2.micro"
+#   name                = var.db_name
+#   username            = var.db_user
+#   password            = var.db_pass
+#   skip_final_snapshot = true
+# }
+
+# ------------------------------------------------
 
 # CODE GRAVEYARD
 # Testing Infrastructure
