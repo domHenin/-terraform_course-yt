@@ -66,7 +66,7 @@ resource "aws_instance" "server01" {
     "Name" = var.instance_name
   }
 
-  user_data       = <<-EOF
+  user_data = <<-EOF
           #!/bin/bash
           echo "Hello World from Server01" > insxdex.html
           python3 -m http.server 8080 &
@@ -82,7 +82,7 @@ resource "aws_instance" "server02" {
     "Name" = var.instance_name
   }
 
-  user_data       = <<-EOF
+  user_data = <<-EOF
           #!/bin/bash
           echo "Hello World from Server02" > index.html
           python3 -m http.server 8080 &

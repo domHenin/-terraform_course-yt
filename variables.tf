@@ -6,7 +6,7 @@ variable "aws_region" {
 
 variable "instance_name" {
   description = "Name of ec2 instance"
-  type = string  
+  type        = string
 }
 
 variable "ami_instance" {
@@ -23,27 +23,27 @@ variable "type_instance" {
 
 variable "s3_data_tag" {
   description = "tag name for data bucket"
-  type = string  
+  type        = string
 }
 
 variable "domain" {
   description = "domain for website"
-  type = string  
+  type        = string
 }
 
 variable "db_name" {
   description = "name for selected database"
-  type = string  
+  type        = string
 }
 
 variable "db_user" {
   description = "user for selected datebase"
-  type = string
+  type        = string
   # default = "foo"
 }
 
 variable "db_pass" {
   description = "password for database"
-  type = string
-  sensitive = true  
+  type        = string
+  sensitive   = true
 }
