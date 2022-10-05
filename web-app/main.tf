@@ -13,12 +13,12 @@
 #       encrypt = true      
 #   }
 
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
+# required_providers {
+#   aws = {
+#     source  = "hashicorp/aws"
+#     version = "~> 3.0"
+#   }
+# }
 # }
 
 
@@ -49,44 +49,44 @@ provider "aws" {
 
 variable "db_pass_01" {
   description = "password for database #1"
-  type = string
-  sensitive = true  
+  type        = string
+  sensitive   = true
 }
 
-variable "db_pass_01" {
+variable "db_pass_02" {
   description = "password for database #2"
-  type = string
-  sensitive = true  
+  type        = string
+  sensitive   = true
 }
 
 module "web-app-1" {
   source = "../web_app-module"
-  
+
   #input variables
   # bucket_name = "web-app-1-devops-directive-web-app-data"
-  domain = "migenjutsu.io"
-  app_name = "web-app-1"
+  # domain           = "migenjutsu.io"
+  app_name         = "web-app-1"
   environment_name = "production"
-  instance_type = "t2.micro"
-  create_dns_zone = true
-  db_name = "webapp1db"
-  db_user = "foo"
-  db_pass = var.db_pass_01
+  instance_type    = "t2.micro"
+  # create_dns_zone  = true
+  # db_name          = "webapp1db"
+  # db_user          = "foo"
+  # db_pass          = var.db_pass_01
 }
 
 module "web-app-2" {
   source = "../web_app-module"
-  
+
   #input variables
   # bucket_name = "web-app-1-devops-directive-web-app-data"
-  domain = "migenjutsu.io"
-  app_name = "web-app-1"
+  # domain           = "migenjutsu.io"
+  app_name         = "web-app-1"
   environment_name = "production"
-  instance_type = "t2.micro"
-  create_dns_zone = true
-  db_name = "webapp2db"
-  db_user = "foo"
-  db_pass = var.db_pass_02
+  instance_type    = "t2.micro"
+  # create_dns_zone  = true
+  # db_name          = "webapp2db"
+  # db_user          = "foo"
+  # db_pass          = var.db_pass_02
 }
 
 # ------------------------------------------------

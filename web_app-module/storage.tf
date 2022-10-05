@@ -1,5 +1,5 @@
 # resource "aws_s3_bucket" "data_bucket" {
-#   bucket = "devops-directive-web-app-data"
+#   bucket = var.bucket_name
 #   force_destroy = true
 # versioning {
 #   enabled = true

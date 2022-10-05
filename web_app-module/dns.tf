@@ -1,7 +1,8 @@
 # route53 to run web application on a domain
 
 # resource "aws_route53_zone" "primary" {
-#   name = "clxdevopsdeployed.com"
+#   count = var.create_dns_zone
+#   name  = "clxdevopsdeployed.com"
 # }
 
 # resource "aws_route53_record" "root" {
