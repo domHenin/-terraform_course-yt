@@ -4,16 +4,10 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "instance_name" {
+variable "app_name" {
   description = "Name of ec2 instance"
   type        = string
   default     = "web-app"
-}
-
-variable "environment_name" {
-  description = "Deployment environment (dev/staging/production)"
-  type        = string
-  default     = "dev"
 }
 
 # EC2 Variables
@@ -24,10 +18,23 @@ variable "ami_instance" {
   default     = "ami-0149b2da6ceec4bb0" # Ubuntu 20.04 LTS //us-east-1
 }
 
-variable "type_instance" {
+variable "instance_type" {
   description = "type of desired instance"
   type        = string
   default     = "t2.micro"
+}
+
+variable "environment_name" {
+  description = "Deployment evironment (dev/staging/production)"
+  type        = string
+  default     = "dev"
+}
+
+variable "instance_name" {
+  description = "Tag for instance"
+  type        = string
+  default     = "web-app_instance"
+
 }
 
 # S3 Variables

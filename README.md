@@ -329,5 +329,15 @@ For more documentation on [Module Blocks](https://www.terraform.io/language/modu
 
 ---
 
+## Errors:
+
+```
+Error: reading ELBv2 Target Group (arn:aws:elasticloadbalancing:us-east-1:610432210095:targetgroup/web-app-2-production-tg/efea1d37868ba1f9): ValidationError: 'arn:aws:elasticloadbalancing:us-east-1:610432210095:targetgroup/web-app-2-production-tg/efea1d37868ba1f9' is not a valid target group ARN
+        status code: 400, request id: ebd1f463-4ead-4add-ab53-de36f9ec3140
+```
+[documentation regarding error](https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/manage-resources-using-terraform.html) could be an issue with my tfstate file
+
+---
+
 [tfhome](https://www.terraform.io)
 [tfdocs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)

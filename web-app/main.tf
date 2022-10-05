@@ -23,7 +23,7 @@
 
 
 provider "aws" {
-  region = var.aws_region
+  # region = var.aws_region
 }
 
 # resource "aws_s3_bucket" "terraform_state" {
@@ -47,27 +47,28 @@ provider "aws" {
 #   }
 # }
 
-variable "db_pass_01" {
-  description = "password for database #1"
-  type        = string
-  sensitive   = true
-}
+# variable "db_pass_01" {
+#   description = "password for database #1"
+#   type        = string
+#   sensitive   = true
+# }
 
-variable "db_pass_02" {
-  description = "password for database #2"
-  type        = string
-  sensitive   = true
-}
+# variable "db_pass_02" {
+#   description = "password for database #2"
+#   type        = string
+#   sensitive   = true
+# }
 
 module "web-app-1" {
   source = "../web_app-module"
 
   #input variables
+
+  app_name         = "web-app-1-devops-directice-web-app-data"
+  environment_name = "production"
+  instance_type    = "t3.micro"
   # bucket_name = "web-app-1-devops-directive-web-app-data"
   # domain           = "migenjutsu.io"
-  app_name         = "web-app-1"
-  environment_name = "production"
-  instance_type    = "t2.micro"
   # create_dns_zone  = true
   # db_name          = "webapp1db"
   # db_user          = "foo"
@@ -78,11 +79,11 @@ module "web-app-2" {
   source = "../web_app-module"
 
   #input variables
+  app_name         = "web-app-2-devops-directice-web-app-data"
+  environment_name = "production"
+  instance_type    = "t3.micro"
   # bucket_name = "web-app-1-devops-directive-web-app-data"
   # domain           = "migenjutsu.io"
-  app_name         = "web-app-1"
-  environment_name = "production"
-  instance_type    = "t2.micro"
   # create_dns_zone  = true
   # db_name          = "webapp2db"
   # db_user          = "foo"

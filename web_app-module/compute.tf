@@ -1,7 +1,8 @@
-resource "aws_instance" "server01" {
+resource "aws_instance" "server_1" {
   ami             = var.ami_instance
-  instance_type   = var.type_instance
-  security_groups = [aws_security_group.server_sg.name]
+  instance_type   = var.instance_type
+  # security_groups = [aws_security_group.server_sg.name]
+  security_groups = [ aws_security_group.instances.name ]
 
   tags = {
     "Name" = var.instance_name
@@ -14,10 +15,11 @@ resource "aws_instance" "server01" {
           EOF  
 }
 
-resource "aws_instance" "server02" {
+resource "aws_instance" "server_2" {
   ami             = var.ami_instance
-  instance_type   = var.type_instance
-  security_groups = [aws_security_group.server_sg.name]
+  instance_type   = var.instance_type
+  # security_groups = [aws_security_group.server_sg.name]
+    security_groups = [ aws_security_group.instances.name ]
 
   tags = {
     "Name" = var.instance_name
